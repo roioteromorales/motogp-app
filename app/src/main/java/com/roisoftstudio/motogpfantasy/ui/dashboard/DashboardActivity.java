@@ -1,12 +1,14 @@
 package com.roisoftstudio.motogpfantasy.ui.dashboard;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
 import com.roisoftstudio.motogpfantasy.R;
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
 import com.roisoftstudio.motogpfantasy.infrastructure.MotoGPApplication;
+import com.roisoftstudio.motogpfantasy.ui.base.BaseActivity;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.ScoreRowItemView;
 import com.roisoftstudio.motogpfantasy.ui.lastresults.LastResultsActivity;
 import com.roisoftstudio.motogpfantasy.ui.myselection.MySelectionActivity;
@@ -16,26 +18,37 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DashboardActivity extends AppCompatActivity implements DashboardPresenter.View  {
+public class DashboardActivity extends BaseActivity implements DashboardPresenter.View {
 
-    @Inject DashboardPresenter dashboardPresenter;
-    @BindView(R.id.scores_container) LinearLayout scoresItemContainer;
+    @Inject
+    DashboardPresenter dashboardPresenter;
+    @BindView(R.id.scores_container)
+    LinearLayout scoresItemContainer;
+
+    public static Intent createIntent(Context context) {
+        return new Intent(context, DashboardActivity.class);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void injectDependencies() {
         MotoGPApplication.component().inject(this);
-        setContentView(R.layout.activity_dashboard);
-        ButterKnife.bind(this);
-        initializePresenter();
+    }
+
+    @Override
+    protected void initializeViews(Bundle savedInstanceState) {
+
     }
 
     protected void initializePresenter() {
         dashboardPresenter.setView(this);
         dashboardPresenter.onInitialize(findViewById(android.R.id.content));
+    }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_dashboard;
     }
 
     @Override

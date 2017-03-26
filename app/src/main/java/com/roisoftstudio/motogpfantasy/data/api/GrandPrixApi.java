@@ -1,4 +1,4 @@
-package com.roisoftstudio.motogpfantasy.datasource.api;
+package com.roisoftstudio.motogpfantasy.data.api;
 
 import com.roisoftstudio.motogpfantasy.domain.model.GrandPrix;
 

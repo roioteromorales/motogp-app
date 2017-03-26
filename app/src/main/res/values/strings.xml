@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MotoGP Fantasy</string>
+    <string name="login_activity_title">Login</string>
+    <string name="dashboard_activity_title">Dashboard</string>
     <string name="last_results_activity_title">Last Results</string>
     <string name="my_selection_activity_title">My Selection</string>
 </resources>

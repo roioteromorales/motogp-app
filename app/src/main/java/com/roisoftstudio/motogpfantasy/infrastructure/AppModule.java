@@ -1,7 +1,9 @@
 package com.roisoftstudio.motogpfantasy.infrastructure;
 
-import com.roisoftstudio.motogpfantasy.datasource.api.GrandPrixApi;
-import com.roisoftstudio.motogpfantasy.datasource.api.ScoresApi;
+import com.roisoftstudio.motogpfantasy.data.api.GrandPrixApi;
+import com.roisoftstudio.motogpfantasy.data.api.ScoresApi;
+import com.roisoftstudio.motogpfantasy.data.repository.InMemorySessionRepository;
+import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
 import com.roisoftstudio.motogpfantasy.domain.service.GrandPrixService;
 import com.roisoftstudio.motogpfantasy.domain.service.ScoresService;
 
@@ -48,5 +50,9 @@ public class AppModule {
     public ScoresService provideScoreService(ScoresApi scoresApi) {
         return new ScoresService(scoresApi);
     }
-
+    @Provides
+    @Singleton
+    public SessionRepository provideSessionRepository() {
+        return new InMemorySessionRepository();
+    }
 }
