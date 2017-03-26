@@ -18,8 +18,8 @@ public class DashboardPresenter {
         this.scoresService = scoresService;
     }
 
-    public void onInitialize(android.view.View contentView) {
-        scoresService.getAll(new GetScoresCallback(view, contentView));
+    public void onInitialize() {
+        scoresService.getAll(new GetScoresCallback(view));
     }
 
     public void setView(DashboardPresenter.View view) {
@@ -28,5 +28,7 @@ public class DashboardPresenter {
 
     public interface View {
         void showScores(List<Score> scores);
+
+        void showError(String message);
     }
 }

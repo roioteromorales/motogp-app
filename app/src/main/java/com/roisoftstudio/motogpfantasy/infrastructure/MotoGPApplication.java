@@ -1,7 +1,6 @@
 package com.roisoftstudio.motogpfantasy.infrastructure;
 
 import android.app.Application;
-import android.support.annotation.VisibleForTesting;
 
 public class MotoGPApplication extends Application {
 
@@ -10,19 +9,10 @@ public class MotoGPApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mainComponent = DaggerMainComponent.builder().appModule(new AppModule()).build();
+        mainComponent = DaggerMainComponent.builder().appModule(new AppModule(this)).build();
     }
 
     public static MainComponent component() {
         return mainComponent;
-    }
-
-    public MainComponent getMainComponent() {
-        return mainComponent;
-    }
-
-    @VisibleForTesting
-    public void setComponent(MainComponent mainComponent) {
-        this.mainComponent = mainComponent;
     }
 }

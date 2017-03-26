@@ -1,8 +1,15 @@
 package com.roisoftstudio.motogpfantasy.infrastructure;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.roisoftstudio.motogpfantasy.data.api.GrandPrixApi;
 import com.roisoftstudio.motogpfantasy.data.api.ScoresApi;
-import com.roisoftstudio.motogpfantasy.data.repository.InMemorySessionRepository;
+import com.roisoftstudio.motogpfantasy.data.persistance.AppPreferences;
+import com.roisoftstudio.motogpfantasy.data.repository.SharedPreferencesSessionRepository;
+import com.roisoftstudio.motogpfantasy.domain.repository.AuthRepository;
+import com.roisoftstudio.motogpfantasy.data.repository.InMemoryAuthRepository;
 import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
 import com.roisoftstudio.motogpfantasy.domain.service.GrandPrixService;
 import com.roisoftstudio.motogpfantasy.domain.service.ScoresService;
@@ -17,6 +24,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class AppModule {
 
+    private static final String PREF_NAME = "MOTOGP_FANTASY_PREFERENCES";
+    private Application app;
+
+    public AppModule(Application app) {
+        this.app = app;
+    }
+
     @Provides
     @Singleton
     public Retrofit provideRetrofit() {
@@ -25,6 +39,12 @@ public class AppModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit;
+    }
+
+    @Singleton
+    @Provides
+    public SharedPreferences getAppPreferences() {
+        return app.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
     @Provides
@@ -52,7 +72,13 @@ public class AppModule {
     }
     @Provides
     @Singleton
-    public SessionRepository provideSessionRepository() {
-        return new InMemorySessionRepository();
+    public SessionRepository provideSessionRepository(AppPreferences appPreferences) {
+        return new SharedPreferencesSessionRepository(appPreferences);
+    }
+
+    @Provides
+    @Singleton
+    public AuthRepository provideAuthRepository() {
+        return new InMemoryAuthRepository();
     }
 }

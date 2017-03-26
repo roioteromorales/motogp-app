@@ -17,7 +17,7 @@ public class StartPresenter {
         this.view = view;
     }
     public void onInitialize() {
-        if (sessionRepository.getSessionToken() != null) {
+        if (sessionRepository.getSessionToken().getToken().equals("valid")) {
             view.redirectToDashboard();
         } else {
             view.redirectToLogin();

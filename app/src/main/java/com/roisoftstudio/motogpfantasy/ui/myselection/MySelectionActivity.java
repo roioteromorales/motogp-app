@@ -8,9 +8,11 @@ import android.os.Bundle;
 import com.roisoftstudio.motogpfantasy.R;
 
 public class MySelectionActivity extends AppCompatActivity {
+
     public static Intent createIntent(Context context) {
         return new Intent(context, MySelectionActivity.class);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

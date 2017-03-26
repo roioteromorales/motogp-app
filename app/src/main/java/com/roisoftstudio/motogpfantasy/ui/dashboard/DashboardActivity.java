@@ -3,6 +3,7 @@ package com.roisoftstudio.motogpfantasy.ui.dashboard;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.widget.LinearLayout;
 
 import com.roisoftstudio.motogpfantasy.R;
@@ -43,7 +44,7 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
 
     protected void initializePresenter() {
         dashboardPresenter.setView(this);
-        dashboardPresenter.onInitialize(findViewById(android.R.id.content));
+        dashboardPresenter.onInitialize();
     }
 
     @Override
@@ -56,6 +57,12 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
         for (Score score : scores) {
             scoresItemContainer.addView(createScoreRowItemView(score));
         }
+    }
+
+    @Override
+    public void showError(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
     private ScoreRowItemView createScoreRowItemView(Score score) {
