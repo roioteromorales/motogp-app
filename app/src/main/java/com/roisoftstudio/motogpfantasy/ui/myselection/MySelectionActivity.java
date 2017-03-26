@@ -1,4 +1,4 @@
-package com.roisoftstudio.motogpfantasy.ui;
+package com.roisoftstudio.motogpfantasy.ui.myselection;
 
 import android.content.Context;
 import android.content.Intent;

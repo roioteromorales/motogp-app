@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context="com.roisoftstudio.motogpfantasy.ui.MainActivity">
+    tools:context="com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardActivity">
 
     <Button
         android:id="@+id/last_results_button"

@@ -3,7 +3,9 @@ package com.roisoftstudio.motogpfantasy.infrastructure;
 import android.app.Application;
 
 import com.roisoftstudio.motogpfantasy.datasource.api.GrandPrixApi;
+import com.roisoftstudio.motogpfantasy.datasource.api.ScoresApi;
 import com.roisoftstudio.motogpfantasy.domain.service.GrandPrixService;
+import com.roisoftstudio.motogpfantasy.domain.service.ScoresService;
 
 import javax.inject.Singleton;
 
@@ -37,5 +39,17 @@ public class AppModule {
     @Singleton
     public GrandPrixService provideGrandPrixService(GrandPrixApi grandPrixApi) {
         return new GrandPrixService(grandPrixApi);
+    }
+
+    @Provides
+    @Singleton
+    public ScoresApi provideScoresApi(Retrofit retrofit) {
+        return retrofit.create(ScoresApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public ScoresService provideScoreservice(ScoresApi scoresApi) {
+        return new ScoresService(scoresApi);
     }
 }

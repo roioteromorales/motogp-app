@@ -1,4 +1,4 @@
-package com.roisoftstudio.motogpfantasy;
+package com.roisoftstudio.motogpfantasy.infrastructure;
 
 import android.app.Application;
 import android.support.annotation.VisibleForTesting;

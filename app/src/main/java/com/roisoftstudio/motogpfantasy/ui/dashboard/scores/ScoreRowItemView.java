@@ -1,4 +1,4 @@
-package com.roisoftstudio.motogpfantasy.ui;
+package com.roisoftstudio.motogpfantasy.ui.dashboard.scores;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;
