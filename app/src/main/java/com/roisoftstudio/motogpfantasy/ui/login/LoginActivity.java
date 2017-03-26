@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.roisoftstudio.motogpfantasy.R;
 import com.roisoftstudio.motogpfantasy.data.persistance.AppPreferences;
@@ -66,6 +67,6 @@ public class LoginActivity  extends BaseActivity implements LoginPresenter.View 
 
     @Override
     public void showError(String message) {
-        Snackbar.make(findViewById(android.R.id.content), "Error: " + message, LENGTH_LONG).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

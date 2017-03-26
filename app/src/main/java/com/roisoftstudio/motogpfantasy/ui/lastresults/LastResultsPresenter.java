@@ -2,7 +2,6 @@ package com.roisoftstudio.motogpfantasy.ui.lastresults;
 
 import com.roisoftstudio.motogpfantasy.domain.model.RaceResult;
 import com.roisoftstudio.motogpfantasy.domain.service.RaceResultsService;
-import com.roisoftstudio.motogpfantasy.ui.lastresults.results.GetRaceResultsCallback;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class LastResultsPresenter {
     }
 
     public void onInitialize() {
-        raceResultsService.getCurrentResults(new GetRaceResultsCallback(view), MOTOGP_CATEGORY);
+        raceResultsService.getCurrentResults(new LastResultsCallback(view), MOTOGP_CATEGORY);
     }
 
 

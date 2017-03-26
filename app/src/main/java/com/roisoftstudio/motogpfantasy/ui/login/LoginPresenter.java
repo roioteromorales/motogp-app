@@ -1,22 +1,22 @@
 package com.roisoftstudio.motogpfantasy.ui.login;
 
-import android.support.design.widget.Snackbar;
-
 import com.roisoftstudio.motogpfantasy.domain.model.LoginCredentials;
+import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
 import com.roisoftstudio.motogpfantasy.domain.service.LoginService;
 
 import javax.inject.Inject;
-import javax.security.auth.login.LoginException;
 
 public class LoginPresenter {
 
     private View view;
 
     private LoginService loginService;
+    private SessionRepository sessionRepository;
 
     @Inject
-    public LoginPresenter(LoginService loginService) {
+    public LoginPresenter(LoginService loginService, SessionRepository sessionRepository) {
         this.loginService = loginService;
+        this.sessionRepository = sessionRepository;
     }
 
     public void setView(LoginPresenter.View view) {
@@ -25,17 +25,12 @@ public class LoginPresenter {
 
     public void onLoginClick(String email, String password) {
         LoginCredentials credentials = LoginCredentials.builder().email(email).password(password).build();
-
-        try {
-            loginService.login(credentials);
-            view.redirectToDashboard();
-        } catch (LoginException e) {
-           view.showError(e.getMessage());
-        }
+        loginService.login(new LoginCallback(view, sessionRepository), credentials);
     }
 
     public interface View {
         void redirectToDashboard();
+
         void showError(String message);
     }
 }

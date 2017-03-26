@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.roisoftstudio.motogpfantasy.R;
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
@@ -67,8 +68,7 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
 
     @Override
     public void showError(String message) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

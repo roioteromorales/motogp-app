@@ -1,4 +1,4 @@
-package com.roisoftstudio.motogpfantasy.ui.dashboard.scores;
+package com.roisoftstudio.motogpfantasy.ui.dashboard;
 
 import android.util.Log;
 
@@ -12,18 +12,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GetScoresCallback implements Callback<List<Score>> {
-    private static final String TAG = "GetScoresCallback";
+public class DashboardScoresCallback implements Callback<List<Score>> {
+    private static final String TAG = "DashboardScoresCallback";
 
     private DashboardPresenter.View dashboardView;
 
-    public GetScoresCallback(DashboardPresenter.View dashboardView) {
+    public DashboardScoresCallback(DashboardPresenter.View dashboardView) {
         this.dashboardView = dashboardView;
     }
 
     @Override
     public void onResponse(Call<List<Score>> call, Response<List<Score>> response) {
-        String message = "GetScoresCallback - Success";
+        String message = "DashboardScoresCallback - Success";
         if (response.isSuccessful()) {
             dashboardView.showScores(response.body());
         } else {

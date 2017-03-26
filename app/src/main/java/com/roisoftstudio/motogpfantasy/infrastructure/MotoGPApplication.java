@@ -2,6 +2,8 @@ package com.roisoftstudio.motogpfantasy.infrastructure;
 
 import android.app.Application;
 
+import com.roisoftstudio.motogpfantasy.infrastructure.module.AppModule;
+
 public class MotoGPApplication extends Application {
 
     private static MainComponent mainComponent;

@@ -1,27 +1,28 @@
 package com.roisoftstudio.motogpfantasy.domain.service;
 
+import com.roisoftstudio.motogpfantasy.data.api.LoginApi;
 import com.roisoftstudio.motogpfantasy.domain.model.AuthToken;
 import com.roisoftstudio.motogpfantasy.domain.model.LoginCredentials;
 import com.roisoftstudio.motogpfantasy.domain.repository.AuthRepository;
 import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
+import com.roisoftstudio.motogpfantasy.ui.login.LoginCallback;
 
 import javax.inject.Inject;
 import javax.security.auth.login.LoginException;
 
 public class LoginService {
 
-    private final AuthRepository authRepository;
+    private final LoginApi loginApi;
     private final SessionRepository sessionRepository;
 
     @Inject
-    public LoginService(AuthRepository authRepository, SessionRepository sessionRepository) {
-        this.authRepository = authRepository;
+    public LoginService(LoginApi loginApi, SessionRepository sessionRepository) {
+        this.loginApi = loginApi;
         this.sessionRepository = sessionRepository;
     }
 
-    public void login(LoginCredentials credentials) throws LoginException {
-        AuthToken authToken = authRepository.getAuthToken(credentials);
-        sessionRepository.createSession(authToken);
+    public void login(LoginCallback loginCallback, LoginCredentials credentials) {
+        loginApi.login(credentials).enqueue(loginCallback);
     }
 
     public void logout() {

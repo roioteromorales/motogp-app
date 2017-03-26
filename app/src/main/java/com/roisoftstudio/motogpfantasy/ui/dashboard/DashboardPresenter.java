@@ -3,7 +3,6 @@ package com.roisoftstudio.motogpfantasy.ui.dashboard;
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
 import com.roisoftstudio.motogpfantasy.domain.service.LoginService;
 import com.roisoftstudio.motogpfantasy.domain.service.ScoresService;
-import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.GetScoresCallback;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class DashboardPresenter {
     }
 
     public void onInitialize() {
-        scoresService.getAll(new GetScoresCallback(view));
+        scoresService.getAll(new DashboardScoresCallback(view));
     }
 
     public void setView(DashboardPresenter.View view) {

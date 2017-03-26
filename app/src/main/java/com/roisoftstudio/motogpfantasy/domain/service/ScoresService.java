@@ -1,7 +1,7 @@
 package com.roisoftstudio.motogpfantasy.domain.service;
 
 import com.roisoftstudio.motogpfantasy.data.api.ScoresApi;
-import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.GetScoresCallback;
+import com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardScoresCallback;
 
 import javax.inject.Inject;
 
@@ -15,7 +15,7 @@ public class ScoresService {
     }
 
 
-    public void getAll(GetScoresCallback getScoresCallback) {
-        scoresApi.getAll().enqueue(getScoresCallback);
+    public void getAll(DashboardScoresCallback dashboardScoresCallback) {
+        scoresApi.getAll().enqueue(dashboardScoresCallback);
     }
 }

@@ -1,4 +1,4 @@
-package com.roisoftstudio.motogpfantasy.ui.lastresults.results;
+package com.roisoftstudio.motogpfantasy.ui.lastresults;
 
 import android.util.Log;
 
@@ -12,18 +12,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GetRaceResultsCallback implements Callback<List<RaceResult>> {
-    private static final String TAG = "GetRaceResultsCallback";
+public class LastResultsCallback implements Callback<List<RaceResult>> {
+    private static final String TAG = "LastResultsCallback";
 
     private LastResultsPresenter.View lastResultsView;
 
-    public GetRaceResultsCallback(LastResultsPresenter.View lastResultsView) {
+    public LastResultsCallback(LastResultsPresenter.View lastResultsView) {
         this.lastResultsView = lastResultsView;
     }
 
     @Override
     public void onResponse(Call<List<RaceResult>> call, Response<List<RaceResult>> response) {
-        String message = "GetRaceResultsCallback - Success";
+        String message = "LastResultsCallback - Success";
         if (response.isSuccessful()) {
             lastResultsView.showResults(response.body());
         } else {

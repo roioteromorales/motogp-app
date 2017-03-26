@@ -1,6 +1,7 @@
 package com.roisoftstudio.motogpfantasy.infrastructure;
 
 
+import com.roisoftstudio.motogpfantasy.infrastructure.module.AppModule;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardActivity;
 import com.roisoftstudio.motogpfantasy.ui.lastresults.LastResultsActivity;
 import com.roisoftstudio.motogpfantasy.ui.login.LoginActivity;

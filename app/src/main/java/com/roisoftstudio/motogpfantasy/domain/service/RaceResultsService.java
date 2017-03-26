@@ -1,7 +1,7 @@
 package com.roisoftstudio.motogpfantasy.domain.service;
 
 import com.roisoftstudio.motogpfantasy.data.api.RaceResultsApi;
-import com.roisoftstudio.motogpfantasy.ui.lastresults.results.GetRaceResultsCallback;
+import com.roisoftstudio.motogpfantasy.ui.lastresults.LastResultsCallback;
 
 import javax.inject.Inject;
 
@@ -12,8 +12,8 @@ public class RaceResultsService {
     public RaceResultsService(RaceResultsApi raceResultsApi) {
         this.raceResultsApi = raceResultsApi;
     }
-    public void getCurrentResults(GetRaceResultsCallback getRaceResultsCallback, String category) {
-        raceResultsApi.getRaceResults(category).enqueue(getRaceResultsCallback);
+    public void getCurrentResults(LastResultsCallback lastResultsCallback, String category) {
+        raceResultsApi.getRaceResults(category).enqueue(lastResultsCallback);
     }
 
 }
