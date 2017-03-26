@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
-import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.ScoreRowItemView;
+import com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardPresenter;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,13 +19,11 @@ import retrofit2.Response;
 public class GetScoresCallback implements Callback<List<Score>> {
     private static final String TAG = "GetScoresCallback";
 
-    private LinearLayout scoresItemContainer;
-    private Context context;
     private View view;
+    private DashboardPresenter.View dashboardView;
 
-    public GetScoresCallback(LinearLayout scoresItemContainer, Context context, View view) {
-        this.scoresItemContainer = scoresItemContainer;
-        this.context = context;
+    public GetScoresCallback(DashboardPresenter.View dashboardView ,View view) {
+        this.dashboardView = dashboardView;
         this.view = view;
     }
 
@@ -33,7 +31,7 @@ public class GetScoresCallback implements Callback<List<Score>> {
     public void onResponse(Call<List<Score>> call, Response<List<Score>> response) {
         String message = "GetScoresCallback - Success";
         if (response.isSuccessful()) {
-            createScores(response.body());
+            dashboardView.showScores(response.body());
         } else {
             try {
                 message = response.errorBody().string();
@@ -43,18 +41,6 @@ public class GetScoresCallback implements Callback<List<Score>> {
         }
         Snackbar.make(view, message, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
-    }
-
-    private void createScores(List<Score> scores) {
-        for (Score score : scores) {
-            scoresItemContainer.addView(createScoreRowItemView(score));
-        }
-    }
-
-    private ScoreRowItemView createScoreRowItemView(Score score) {
-        ScoreRowItemView scoreRowItemView = new ScoreRowItemView(context);
-        scoreRowItemView.fillWith(score);
-        return scoreRowItemView;
     }
 
     @Override

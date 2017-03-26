@@ -3,10 +3,6 @@ package com.roisoftstudio.motogpfantasy.infrastructure;
 import android.app.Application;
 import android.support.annotation.VisibleForTesting;
 
-import com.roisoftstudio.motogpfantasy.infrastructure.AppModule;
-import com.roisoftstudio.motogpfantasy.infrastructure.DaggerMainComponent;
-import com.roisoftstudio.motogpfantasy.infrastructure.MainComponent;
-
 public class MotoGPApplication extends Application {
 
     private static MainComponent mainComponent;
