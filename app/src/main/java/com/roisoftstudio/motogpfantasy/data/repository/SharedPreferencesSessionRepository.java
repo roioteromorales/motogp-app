@@ -21,6 +21,11 @@ public class SharedPreferencesSessionRepository implements SessionRepository {
     }
 
     @Override
+    public void cleanSession() {
+        appPreferences.write(null);
+    }
+
+    @Override
     public AuthToken getSessionToken() {
         String tokenValue = appPreferences.read();
         if ("valid".equals(tokenValue)) {

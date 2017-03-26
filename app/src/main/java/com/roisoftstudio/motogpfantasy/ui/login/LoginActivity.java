@@ -61,6 +61,7 @@ public class LoginActivity  extends BaseActivity implements LoginPresenter.View 
     @Override
     public void redirectToDashboard() {
         startActivity(DashboardActivity.createIntent(this));
+        finish();
     }
 
     @Override

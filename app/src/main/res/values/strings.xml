@@ -4,4 +4,5 @@
     <string name="dashboard_activity_title">Dashboard</string>
     <string name="last_results_activity_title">Last Results</string>
     <string name="my_selection_activity_title">My Selection</string>
+    <string name="action_logout">Logout</string>
 </resources>

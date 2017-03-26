@@ -23,4 +23,8 @@ public class LoginService {
         AuthToken authToken = authRepository.getAuthToken(credentials);
         sessionRepository.createSession(authToken);
     }
+
+    public void logout() {
+        sessionRepository.cleanSession();
+    }
 }

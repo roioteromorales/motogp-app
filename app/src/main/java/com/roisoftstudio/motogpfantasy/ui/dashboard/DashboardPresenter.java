@@ -1,6 +1,7 @@
 package com.roisoftstudio.motogpfantasy.ui.dashboard;
 
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
+import com.roisoftstudio.motogpfantasy.domain.service.LoginService;
 import com.roisoftstudio.motogpfantasy.domain.service.ScoresService;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.GetScoresCallback;
 
@@ -12,10 +13,12 @@ public class DashboardPresenter {
 
     private View view;
     private final ScoresService scoresService;
+    private final LoginService loginService;
 
     @Inject
-    public DashboardPresenter(ScoresService scoresService) {
+    public DashboardPresenter(ScoresService scoresService, LoginService loginService) {
         this.scoresService = scoresService;
+        this.loginService = loginService;
     }
 
     public void onInitialize() {
@@ -26,9 +29,14 @@ public class DashboardPresenter {
         this.view = view;
     }
 
+    public void logout() {
+        loginService.logout();
+        view.logout();
+    }
+
     public interface View {
         void showScores(List<Score> scores);
-
         void showError(String message);
+        void logout();
     }
 }

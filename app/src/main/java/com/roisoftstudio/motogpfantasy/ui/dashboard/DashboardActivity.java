@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.roisoftstudio.motogpfantasy.R;
@@ -12,6 +16,7 @@ import com.roisoftstudio.motogpfantasy.infrastructure.MotoGPApplication;
 import com.roisoftstudio.motogpfantasy.ui.base.BaseActivity;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.ScoreRowItemView;
 import com.roisoftstudio.motogpfantasy.ui.lastresults.LastResultsActivity;
+import com.roisoftstudio.motogpfantasy.ui.login.LoginActivity;
 import com.roisoftstudio.motogpfantasy.ui.myselection.MySelectionActivity;
 
 import java.util.List;
@@ -39,7 +44,8 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
 
     @Override
     protected void initializeViews(Bundle savedInstanceState) {
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     protected void initializePresenter() {
@@ -65,6 +71,12 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
                 .setAction("Action", null).show();
     }
 
+    @Override
+    public void logout() {
+        startActivity(LoginActivity.createIntent(this));
+        finish();
+    }
+
     private ScoreRowItemView createScoreRowItemView(Score score) {
         ScoreRowItemView scoreRowItemView = new ScoreRowItemView(this);
         scoreRowItemView.fillWith(score);
@@ -80,5 +92,22 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
     public void onMySelectionButtonClick() {
         startActivity(MySelectionActivity.createIntent(this));
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                dashboardPresenter.logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 }

@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardActivity">
 
-    <Button
-        android:id="@+id/last_results_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LAST RESULTS" />
+    <include layout="@layout/toolbar" />
 
-    <Button
-        android:id="@+id/my_selection_button"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MY SELECTION" />
-
-    <TextView
-        android:id="@+id/scores_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="Scores" />
-
-    <LinearLayout
-        android:id="@+id/scores_container"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:padding="16dp"
+        tools:context="com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardActivity">
+
+        <Button
+            android:id="@+id/last_results_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LAST RESULTS" />
+
+        <Button
+            android:id="@+id/my_selection_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MY SELECTION" />
+
+        <TextView
+            android:id="@+id/scores_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Scores" />
+
+        <LinearLayout
+            android:id="@+id/scores_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </LinearLayout>
 </LinearLayout>
