@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.roisoftstudio.motogpfantasy.data.api.GrandPrixApi;
+import com.roisoftstudio.motogpfantasy.data.api.RaceResultsApi;
 import com.roisoftstudio.motogpfantasy.data.api.ScoresApi;
 import com.roisoftstudio.motogpfantasy.data.persistance.AppPreferences;
 import com.roisoftstudio.motogpfantasy.data.repository.SharedPreferencesSessionRepository;
@@ -63,6 +64,13 @@ public class AppModule {
     @Singleton
     public ScoresApi provideScoresApi(Retrofit retrofit) {
         return retrofit.create(ScoresApi.class);
+    }
+
+
+    @Provides
+    @Singleton
+    public RaceResultsApi provideRaceResultsApi(Retrofit retrofit) {
+        return retrofit.create(RaceResultsApi.class);
     }
 
     @Provides

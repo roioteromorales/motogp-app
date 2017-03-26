@@ -16,25 +16,15 @@
         <activity android:name=".ui.start.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/login_activity_title" />
-
-        <activity
-            android:name=".ui.dashboard.DashboardActivity"
-            android:label="@string/dashboard_activity_title" />
-        <activity
-            android:name=".ui.lastresults.LastResultsActivity"
-            android:label="@string/last_results_activity_title" />
-        <activity
-            android:name=".ui.myselection.MySelectionActivity"
-            android:label="@string/my_selection_activity_title" />
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.dashboard.DashboardActivity" />
+        <activity android:name=".ui.lastresults.LastResultsActivity" />
+        <activity android:name=".ui.myselection.MySelectionActivity" />
     </application>
 
 </manifest>
