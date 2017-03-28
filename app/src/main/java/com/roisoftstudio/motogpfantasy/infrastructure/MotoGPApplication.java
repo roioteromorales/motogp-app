@@ -4,17 +4,16 @@ import android.app.Application;
 
 import com.roisoftstudio.motogpfantasy.infrastructure.module.AppModule;
 
+import timber.log.Timber;
+
 public class MotoGPApplication extends Application {
 
-    private static MainComponent mainComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mainComponent = DaggerMainComponent.builder().appModule(new AppModule(this)).build();
+        Injector.inject(this);
+        Timber.plant(new Timber.DebugTree());
     }
 
-    public static MainComponent component() {
-        return mainComponent;
-    }
 }

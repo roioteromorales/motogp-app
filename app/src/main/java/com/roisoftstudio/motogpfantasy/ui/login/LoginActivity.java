@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.roisoftstudio.motogpfantasy.R;
 import com.roisoftstudio.motogpfantasy.data.persistance.AppPreferences;
+import com.roisoftstudio.motogpfantasy.infrastructure.Injector;
 import com.roisoftstudio.motogpfantasy.infrastructure.MotoGPApplication;
 import com.roisoftstudio.motogpfantasy.ui.base.BaseActivity;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardActivity;
@@ -33,7 +34,7 @@ public class LoginActivity  extends BaseActivity implements LoginPresenter.View 
 
     @Override
     protected void injectDependencies() {
-        MotoGPApplication.component().inject(this);
+        Injector.component().inject(this);
     }
 
     @Override

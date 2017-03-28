@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 import com.roisoftstudio.motogpfantasy.data.api.GrandPrixApi;
 import com.roisoftstudio.motogpfantasy.data.api.LoginApi;
+import com.roisoftstudio.motogpfantasy.data.api.MySelectionApi;
 import com.roisoftstudio.motogpfantasy.data.api.RaceResultsApi;
 import com.roisoftstudio.motogpfantasy.data.api.ScoresApi;
 import com.roisoftstudio.motogpfantasy.data.persistance.AppPreferences;
@@ -15,7 +16,9 @@ import com.roisoftstudio.motogpfantasy.domain.repository.AuthRepository;
 import com.roisoftstudio.motogpfantasy.data.repository.InMemoryAuthRepository;
 import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
 import com.roisoftstudio.motogpfantasy.domain.service.GrandPrixService;
+import com.roisoftstudio.motogpfantasy.domain.service.MySelectionService;
 import com.roisoftstudio.motogpfantasy.domain.service.ScoresService;
+import com.roisoftstudio.motogpfantasy.infrastructure.okhttp.TokenInterceptor;
 
 import javax.inject.Singleton;
 
@@ -37,10 +40,13 @@ public class AppModule {
     }
 
     @Provides
-    public OkHttpClient provideOkHttpClient() {
+    public OkHttpClient provideOkHttpClient(TokenInterceptor tokenInterceptor) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        return new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        return new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .addInterceptor(tokenInterceptor)
+                .build();
     }
 
     @Provides
@@ -65,17 +71,16 @@ public class AppModule {
     public GrandPrixApi provideGrandPrixApi(Retrofit retrofit) {
         return retrofit.create(GrandPrixApi.class);
     }
-
-    @Provides
-    @Singleton
-    public GrandPrixService provideGrandPrixService(GrandPrixApi grandPrixApi) {
-        return new GrandPrixService(grandPrixApi);
-    }
-
     @Provides
     @Singleton
     public ScoresApi provideScoresApi(Retrofit retrofit) {
         return retrofit.create(ScoresApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public MySelectionApi provideMySelectionApi(Retrofit retrofit) {
+        return retrofit.create(MySelectionApi.class);
     }
 
     @Provides
@@ -94,12 +99,6 @@ public class AppModule {
     @Singleton
     public RaceResultsApi provideRaceResultsApi(Retrofit retrofit) {
         return retrofit.create(RaceResultsApi.class);
-    }
-
-    @Provides
-    @Singleton
-    public ScoresService provideScoreService(ScoresApi scoresApi) {
-        return new ScoresService(scoresApi);
     }
 
     @Provides

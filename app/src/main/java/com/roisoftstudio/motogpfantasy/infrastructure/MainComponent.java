@@ -5,6 +5,7 @@ import com.roisoftstudio.motogpfantasy.infrastructure.module.AppModule;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardActivity;
 import com.roisoftstudio.motogpfantasy.ui.lastresults.LastResultsActivity;
 import com.roisoftstudio.motogpfantasy.ui.login.LoginActivity;
+import com.roisoftstudio.motogpfantasy.ui.myselection.MySelectionActivity;
 import com.roisoftstudio.motogpfantasy.ui.start.StartActivity;
 
 import javax.inject.Singleton;
@@ -18,4 +19,5 @@ public interface MainComponent {
     void inject(StartActivity activity);
     void inject(LoginActivity activity);
     void inject(LastResultsActivity lastResultsActivity);
+    void inject(MySelectionActivity mySelectionActivity);
 }

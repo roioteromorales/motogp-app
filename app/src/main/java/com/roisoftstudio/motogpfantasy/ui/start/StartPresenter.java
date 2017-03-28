@@ -4,6 +4,8 @@ import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
 
 import javax.inject.Inject;
 
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class StartPresenter {
     private final SessionRepository sessionRepository;
     private View view;
@@ -17,7 +19,7 @@ public class StartPresenter {
         this.view = view;
     }
     public void onInitialize() {
-        if (sessionRepository.getSessionToken().getToken().equals("valid")) {
+        if (isNotEmpty(sessionRepository.getSessionToken().getToken())) {
             view.redirectToDashboard();
         } else {
             view.redirectToLogin();

@@ -4,7 +4,11 @@ import com.roisoftstudio.motogpfantasy.data.persistance.AppPreferences;
 import com.roisoftstudio.motogpfantasy.domain.model.AuthToken;
 import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.inject.Inject;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class SharedPreferencesSessionRepository implements SessionRepository {
 
@@ -28,7 +32,7 @@ public class SharedPreferencesSessionRepository implements SessionRepository {
     @Override
     public AuthToken getSessionToken() {
         String tokenValue = appPreferences.read();
-        if ("valid".equals(tokenValue)) {
+        if (isNotEmpty(tokenValue)) {
             return new AuthToken(tokenValue);
         } else {
             return new AuthToken("");

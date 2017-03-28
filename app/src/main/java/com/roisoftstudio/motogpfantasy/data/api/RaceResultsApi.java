@@ -1,5 +1,6 @@
 package com.roisoftstudio.motogpfantasy.data.api;
 
+import com.roisoftstudio.motogpfantasy.domain.model.Category;
 import com.roisoftstudio.motogpfantasy.domain.model.RaceResult;
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
 
@@ -11,5 +12,5 @@ import retrofit2.http.Path;
 
 public interface RaceResultsApi {
     @GET("results/current/{category}")
-    Call<List<RaceResult>> getRaceResults(@Path("category") String category);
+    Call<List<RaceResult>> getRaceResults(@Path("category") Category category);
 }

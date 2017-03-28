@@ -3,6 +3,7 @@ package com.roisoftstudio.motogpfantasy.ui.start;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.roisoftstudio.motogpfantasy.infrastructure.Injector;
 import com.roisoftstudio.motogpfantasy.infrastructure.MotoGPApplication;
 import com.roisoftstudio.motogpfantasy.ui.base.BaseActivity;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.DashboardActivity;
@@ -17,7 +18,7 @@ public class StartActivity extends BaseActivity implements StartPresenter.View{
 
     @Override
     protected void injectDependencies() {
-        MotoGPApplication.component().inject(this);
+        Injector.component().inject(this);
     }
 
     @Override

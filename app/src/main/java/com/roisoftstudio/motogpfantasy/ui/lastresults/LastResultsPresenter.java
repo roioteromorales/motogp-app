@@ -7,12 +7,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static com.roisoftstudio.motogpfantasy.domain.model.Category.MOTOGP;
+
 public class LastResultsPresenter {
 
-    private static final String MOTOGP_CATEGORY = "MOTOGP";
     private View view;
     private RaceResultsService raceResultsService;
-
 
     @Inject
     public LastResultsPresenter(RaceResultsService raceResultsService) {
@@ -24,7 +24,7 @@ public class LastResultsPresenter {
     }
 
     public void onInitialize() {
-        raceResultsService.getCurrentResults(new LastResultsCallback(view), MOTOGP_CATEGORY);
+        raceResultsService.getCurrentResults(new LastResultsCallback(view), MOTOGP);
     }
 
 

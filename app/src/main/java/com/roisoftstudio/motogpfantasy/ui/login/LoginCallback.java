@@ -29,9 +29,11 @@ public class LoginCallback implements Callback<AuthToken> {
 
     @Override
     public void onResponse(Call<AuthToken> call, Response<AuthToken> response) {
-        String message = "DashboardScoresCallback - Success";
+        String message = "Login Success";
+        AuthToken authToken = new AuthToken("");
         if (response.isSuccessful()) {
-            sessionRepository.createSession(response.body());
+            authToken = response.body();
+            sessionRepository.createSession(authToken);
             loginView.redirectToDashboard();
         } else {
             try {
@@ -40,7 +42,7 @@ public class LoginCallback implements Callback<AuthToken> {
                 e.printStackTrace();
             }
         }
-        loginView.showError(message);
+        loginView.showError(message+ ", user: " + authToken.getToken());
     }
 
     @Override

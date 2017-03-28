@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.roisoftstudio.motogpfantasy.R;
 import com.roisoftstudio.motogpfantasy.domain.model.RaceResult;
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
+import com.roisoftstudio.motogpfantasy.infrastructure.Injector;
 import com.roisoftstudio.motogpfantasy.infrastructure.MotoGPApplication;
 import com.roisoftstudio.motogpfantasy.ui.base.BaseActivity;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.ScoreRowItemView;
@@ -35,7 +36,7 @@ public class LastResultsActivity extends BaseActivity implements LastResultsPres
 
     @Override
     protected void injectDependencies() {
-        MotoGPApplication.component().inject(this);
+        Injector.component().inject(this);
     }
 
     @Override

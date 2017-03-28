@@ -1,14 +1,11 @@
 package com.roisoftstudio.motogpfantasy.domain.service;
 
 import com.roisoftstudio.motogpfantasy.data.api.LoginApi;
-import com.roisoftstudio.motogpfantasy.domain.model.AuthToken;
 import com.roisoftstudio.motogpfantasy.domain.model.LoginCredentials;
-import com.roisoftstudio.motogpfantasy.domain.repository.AuthRepository;
 import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
 import com.roisoftstudio.motogpfantasy.ui.login.LoginCallback;
 
 import javax.inject.Inject;
-import javax.security.auth.login.LoginException;
 
 public class LoginService {
 
