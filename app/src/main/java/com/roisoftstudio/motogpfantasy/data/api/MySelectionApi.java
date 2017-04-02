@@ -8,6 +8,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface MySelectionApi {
-    @GET("selection/category/{category}")
+    @GET("selection/category/{category}/")
     Call<MySelection> getMySelection(@Path("category") Category category);
 }

@@ -8,12 +8,12 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class TokenInterceptor implements Interceptor {
+public class BasicAuthorizationHeaderInterceptor implements Interceptor {
 
     private static final String HEADER_CLIENT_TOKEN = "Basic 123";
 
     @Inject
-    public TokenInterceptor() {
+    public BasicAuthorizationHeaderInterceptor() {
     }
 
     @Override

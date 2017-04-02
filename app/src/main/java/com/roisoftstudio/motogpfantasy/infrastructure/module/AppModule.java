@@ -13,12 +13,9 @@ import com.roisoftstudio.motogpfantasy.data.persistance.AppPreferences;
 import com.roisoftstudio.motogpfantasy.data.repository.ApiAuthRepository;
 import com.roisoftstudio.motogpfantasy.data.repository.SharedPreferencesSessionRepository;
 import com.roisoftstudio.motogpfantasy.domain.repository.AuthRepository;
-import com.roisoftstudio.motogpfantasy.data.repository.InMemoryAuthRepository;
 import com.roisoftstudio.motogpfantasy.domain.repository.SessionRepository;
-import com.roisoftstudio.motogpfantasy.domain.service.GrandPrixService;
-import com.roisoftstudio.motogpfantasy.domain.service.MySelectionService;
-import com.roisoftstudio.motogpfantasy.domain.service.ScoresService;
-import com.roisoftstudio.motogpfantasy.infrastructure.okhttp.TokenInterceptor;
+import com.roisoftstudio.motogpfantasy.infrastructure.okhttp.BasicAuthorizationHeaderInterceptor;
+import com.roisoftstudio.motogpfantasy.infrastructure.okhttp.TokenAuthorizationHeaderInterceptor;
 
 import javax.inject.Singleton;
 
@@ -40,12 +37,13 @@ public class AppModule {
     }
 
     @Provides
-    public OkHttpClient provideOkHttpClient(TokenInterceptor tokenInterceptor) {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    public OkHttpClient provideOkHttpClient(BasicAuthorizationHeaderInterceptor basicAuthorizationHeaderInterceptor, TokenAuthorizationHeaderInterceptor tokenAuthorizationHeaderInterceptor) {
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-                .addInterceptor(tokenInterceptor)
+                .addInterceptor(basicAuthorizationHeaderInterceptor)
+                .addInterceptor(tokenAuthorizationHeaderInterceptor)
+                .addInterceptor(loggingInterceptor)
                 .build();
     }
 
@@ -71,6 +69,7 @@ public class AppModule {
     public GrandPrixApi provideGrandPrixApi(Retrofit retrofit) {
         return retrofit.create(GrandPrixApi.class);
     }
+
     @Provides
     @Singleton
     public ScoresApi provideScoresApi(Retrofit retrofit) {
