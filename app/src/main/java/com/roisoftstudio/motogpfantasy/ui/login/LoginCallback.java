@@ -32,6 +32,7 @@ public class LoginCallback implements Callback<AuthToken> {
         String message = "Login Success";
         if (response.isSuccessful()) {
             sessionRepository.createSession(response.body());
+            message += " - " + response.body().toString();
             loginView.redirectToDashboard();
         } else {
             try {

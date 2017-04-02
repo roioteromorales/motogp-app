@@ -11,4 +11,11 @@ public class AuthToken {
   public String getToken() {
     return token;
   }
+
+  @Override
+  public String toString() {
+    return "AuthToken{" +
+            "token='" + token + '\'' +
+            '}';
+  }
 }
