@@ -1,6 +1,6 @@
 package com.roisoftstudio.motogpfantasy.ui.myselection;
 
-import com.roisoftstudio.motogpfantasy.domain.model.MySelection;
+import com.roisoftstudio.motogpfantasy.domain.model.Selection;
 import com.roisoftstudio.motogpfantasy.domain.service.MySelectionService;
 
 import javax.inject.Inject;
@@ -28,7 +28,7 @@ public class MySelectionPresenter {
 
 
     public interface View {
-        void showMySelection(MySelection mySelection);
+        void showMySelection(Selection selection);
         void showError(String message);
     }
 }
