@@ -3,14 +3,12 @@ package com.roisoftstudio.motogpfantasy.domain.model;
 import com.roisoftstudio.motogpfantasy.domain.model.rider.Rider;
 
 public class Selection {
-    private final Category category;
     private final Rider firstPosition;
     private final Rider secondPosition;
     private final Rider thirdPosition;
     private final LapResult fastestLap;
 
-    public Selection(Category category, Rider firstPosition, Rider secondPosition, Rider thirdPosition, LapResult fastestLap) {
-        this.category = category;
+    public Selection(Rider firstPosition, Rider secondPosition, Rider thirdPosition, LapResult fastestLap) {
         this.firstPosition = firstPosition;
         this.secondPosition = secondPosition;
         this.thirdPosition = thirdPosition;
@@ -32,4 +30,5 @@ public class Selection {
     public LapResult getFastestLap() {
         return fastestLap;
     }
+
 }

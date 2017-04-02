@@ -12,19 +12,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".ui.start.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.dashboard.DashboardActivity" />
         <activity android:name=".ui.lastresults.LastResultsActivity" />
-        <activity android:name=".ui.myselection.MySelectionActivity" />
+        <activity
+            android:name=".ui.myselection.SelectionActivity"
+            android:label="@string/title_activity_selection"></activity>
     </application>
 
 </manifest>

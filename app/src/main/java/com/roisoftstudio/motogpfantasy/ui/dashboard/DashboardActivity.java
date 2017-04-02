@@ -3,7 +3,6 @@ package com.roisoftstudio.motogpfantasy.ui.dashboard;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,12 +13,11 @@ import android.widget.Toast;
 import com.roisoftstudio.motogpfantasy.R;
 import com.roisoftstudio.motogpfantasy.domain.model.Score;
 import com.roisoftstudio.motogpfantasy.infrastructure.Injector;
-import com.roisoftstudio.motogpfantasy.infrastructure.MotoGPApplication;
 import com.roisoftstudio.motogpfantasy.ui.base.BaseActivity;
 import com.roisoftstudio.motogpfantasy.ui.dashboard.scores.ScoreRowItemView;
 import com.roisoftstudio.motogpfantasy.ui.lastresults.LastResultsActivity;
 import com.roisoftstudio.motogpfantasy.ui.login.LoginActivity;
-import com.roisoftstudio.motogpfantasy.ui.myselection.MySelectionActivity;
+import com.roisoftstudio.motogpfantasy.ui.myselection.SelectionActivity;
 
 import java.util.List;
 
@@ -91,8 +89,9 @@ public class DashboardActivity extends BaseActivity implements DashboardPresente
 
     @OnClick(R.id.my_selection_button)
     public void onMySelectionButtonClick() {
-        startActivity(MySelectionActivity.createIntent(this));
+        startActivity(SelectionActivity.createIntent(this));
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

@@ -10,18 +10,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MySelectionCallback implements Callback<Selection> {
-    private static final String TAG = "DashboardScoresCallback";
+public class SaveSelectionCallback implements Callback<Selection> {
+    private static final String TAG = "SaveSelectionCallback";
 
-    private MySelectionPresenter.View view;
+    private SelectionPresenter.View view;
 
-    public MySelectionCallback(MySelectionPresenter.View view) {
+    public SaveSelectionCallback(SelectionPresenter.View view) {
         this.view = view;
     }
 
     @Override
     public void onResponse(Call<Selection> call, Response<Selection> response) {
-        String message = "Selection Success";
+        String message = "Selection created Success";
         if (response.isSuccessful()) {
             Selection selection = response.body();
             view.showMySelection(selection);

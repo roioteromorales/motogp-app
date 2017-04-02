@@ -5,4 +5,11 @@
     <string name="last_results_activity_title">Last Results</string>
     <string name="my_selection_activity_title">My Selection</string>
     <string name="action_logout">Logout</string>
+    <string name="title_activity_selection">SelectionActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="title_motogp">MotoGP</string>
+    <string name="title_moto2">Moto2</string>
+    <string name="title_moto3">Moto3</string>
 </resources>
